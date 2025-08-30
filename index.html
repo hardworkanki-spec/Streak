@@ -65,7 +65,12 @@
     <button class="btn danger" onclick="resetStreak()">⏮ Reset</button>
     <button class="btn success" onclick="markWin()">✅ Mark Today Win</button>
   </div>
-
+  <div id="controls">
+  <button class="btn save" onclick="saveProgress()">💾 Save Progress</button>
+  <button class="btn danger" onclick="resetStreak()">⏮ Reset</button>
+  <button class="btn success" onclick="markWin()">✅ Mark Today Win</button>
+  <button class="btn" style="background:#f59e0b; color:white;" onclick="panicQuote()">⚡ Panic Button</button>
+  </div>
   <script>
     // === Config ===
     const DEFAULT_START_ISO = "2025-08-17T00:00:00+05:30"; // IST
@@ -216,7 +221,9 @@
     function loadStartDate() {
       return localStorage.getItem("streakStart") || DEFAULT_START_ISO;
     }
-
+    function panicQuote() {
+  document.getElementById("quote").textContent = getRandomQuote();
+    }
     function saveProgress() {
       localStorage.setItem("streakStart", startDate.toISOString());
       alert("Progress saved ✅");
